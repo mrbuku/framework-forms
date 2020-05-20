@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "FwkForms\\": "app"
+    }
+  },
+  "require": {
+    "illuminate/database": "^5.7"
+  }
+}

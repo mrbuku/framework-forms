@@ -1,0 +1,6 @@
+node_modules/
+composer.lock
+vendor/
+.vscode/
+.log
+.idea
