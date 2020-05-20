@@ -15,22 +15,22 @@ class FwkForms
         $this->loadDependencies();
     }
 
-    public function loadDependencies()
+    public function loadDependencies(): void
     {
         $this->loader = new Loader();
     }
 
-    public function defineAdminHooks()
+    public function defineAdminHooks(): void
     {
 
     }
 
-    public function definePublicHooks()
+    public function definePublicHooks(): void
     {
 
     }
 
-    public function run()
+    public function run(): void
     {
         $this->loader->run();
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Activation {
 
-    public static function run()
+    public static function run(): void
     {
         self::createTables();
     }

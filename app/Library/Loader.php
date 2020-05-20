@@ -15,7 +15,16 @@ class Loader
         $this->filters = [];
     }
 
-    private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args )
+    /**
+     * @param $hooks
+     * @param $hook
+     * @param $component
+     * @param $callback
+     * @param $priority
+     * @param $accepted_args
+     * @return array
+     */
+    private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ): array
     {
         $hooks[] = [
             'hook'          => $hook,
@@ -27,17 +36,31 @@ class Loader
         return $hooks;
     }
 
+    /**
+     * @param $hook
+     * @param $component
+     * @param $callback
+     * @param int $priority
+     * @param int $accepted_args
+     */
     public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 )
     {
         $this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
     }
 
-    public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 )
+    /**
+     * @param $hook
+     * @param $component
+     * @param $callback
+     * @param int $priority
+     * @param int $accepted_args
+     */
+    public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ): void
     {
         $this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
     }
 
-    public function run()
+    public function run(): void
     {
         foreach ( $this->filters as $hook ) {
             add_filter( $hook['hook'], [ $hook['component'], $hook['callback'] ], $hook['priority'], $hook['accepted_args'] );
